@@ -1,0 +1,14 @@
+<span 
+  class="glyphicon"
+  [ngClass]="{
+    'glyphicon-star' : isFavorite,
+    'glyphicon-star-empty' : !isFavorite
+  }"
+  [ngStyle]="{
+    'color' : isFavorite ? 'black' : 'red',
+    'font-size' : isFavorite ? '26px' : '20px'
+  }"
+  (click)="onClick()"
+  >
+
+</span>

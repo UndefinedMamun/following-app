@@ -1,0 +1,9 @@
+<div class="nav nav-pills">
+  <li [class.active]="active =='left'"><a (click)="active ='left'">Left</a></li>
+  <li [class.active]="active =='right'"><a (click)="active ='right'">Right</a></li>
+</div>
+
+<div [ngSwitch]="active">
+  <h2 *ngSwitchCase="'left'">left components</h2>
+  <h2 *ngSwitchCase="'right'">right components</h2>
+</div>

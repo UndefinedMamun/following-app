@@ -1,0 +1,59 @@
+<form #f="ngForm" (ngSubmit)="log(f)">
+  <div ngModelGroup="names" #firstNameg>
+      <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input 
+            ngModel 
+            #firstName="ngModel"
+            (change)="log(firstName)"
+            required
+            minlength="2"
+            maxlength="10"
+            pattern="name"
+            name="firstName" 
+            id="firstName" 
+            type="text" 
+            class="form-control">
+          <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+            <div *ngIf="firstName.errors.required">First Name is required*</div>
+            <div *ngIf="firstName.errors.minlength">First Name should be minimum 2 characters</div>
+            <div *ngIf="firstName.errors.pattern">Pattern Violation</div>
+          </div>
+        </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea 
+      ngModel 
+      id="comment" 
+      name="comment" 
+      class="form-control" 
+      rows="5"></textarea>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribed"> Subscribe
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <select multiple class="form-control" ngModel name="contactMethod" id="contactMethod">
+      <option value=""></option>
+      <option *ngFor="let method of contactMethods" [ngValue]="method">{{method.name}}</option>
+    </select>
+  </div>
+
+  <div *ngFor="let method of contactMethods">
+    <label>
+        <input type="radio" name="contactMethod" ngModel value="{{method.id}}" >  {{method.name}}
+    </label>
+  </div>
+
+  <div>
+    {{f.value | json}}
+  </div>
+  <button [disabled]="f.invalid" class="btn btn-success">Submit</button>
+</form>

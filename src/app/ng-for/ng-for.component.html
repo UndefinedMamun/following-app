@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let name of names; index as i; even as e; first as f; last as l" >
+    {{i}} - {{name.name}}  {{ e ? '- even' : '- odd'}} {{f ? '- first' : ''}} {{l ? '- last' : ''}}
+  </li>
+
+</ul>
